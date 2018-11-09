@@ -13,7 +13,7 @@ module.exports = {
           // console.log('------get redis--------', reply1)
           res.status(200).json(reply1)
         } else if(reply === null){
-          // console.log('ini nulll---')
+          
           // get all data
           getentertainmedata(req,res)
 
@@ -46,6 +46,33 @@ module.exports = {
         .catch(error => {
           res.status(500).json({
             msg: 'ERROR Create Movies from Server 1',
+            err: error
+          })
+        })
+    },
+    addtvseries: function (req,res) {
+      axios({
+        method: 'POST',
+        url: 'http://localhost:3002/tvseries',
+        data: {
+          title: req.body.title,
+          overview: req.body.overview,
+          poster_path: req.body.poster_path,
+          status: req.body.status,
+          popularity: req.body.popularity,
+          tag: req.body.tag
+        }
+      })
+        .then(tvseries => {
+          let newseries = tvseries.data
+          
+          getentertainmedata(req,res)
+
+          res.status(201).json(newseries)
+        })
+        .catch(error => {
+          res.status(500).json({
+            msg: 'ERROR Create TV Series from Server 1',
             err: error
           })
         })
