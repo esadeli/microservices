@@ -5,12 +5,12 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 
-const MovieRouter = require('./routes/MovieRouter')
+const EntertainmeRouter = require('./routes/EntertainmeRouter')
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 app.use(cors())
-app.use('/entertainme', MovieRouter)
+app.use('/entertainme', EntertainmeRouter)
 
 app.get('/', () => {res.send('OK')})
 app.listen(process.env.PORT || 3000, ()=>{
