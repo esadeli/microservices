@@ -4,13 +4,19 @@ const Movie = require('../models/movie')
 
 module.exports = {
     add: function (req,res) {
+
+        let dataTag = []
+        req.body.tag.forEach(tag => {
+           dataTag.push({text: tag}) 
+        });
+
         Movie.create({
             title: req.body.title,
             overview: req.body.overview,
             poster_path: req.body.poster_path,
-            overview: req.body.overview,
+            status: req.body.status,
             popularity: req.body.popularity,
-            tag: req.body.tag
+            tag: dataTag
         })
             .then(movie =>{
                 res.status(201).json({
@@ -29,7 +35,7 @@ module.exports = {
         Movie.find({})
             .then(movies => {
                 res.status(200).json({
-                    msg: 'List of movies data',
+                    info: 'movies found successfully',
                     data: movies
                 })
             })

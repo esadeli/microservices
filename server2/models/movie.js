@@ -7,9 +7,11 @@ const MovieSchema = new Schema({
     title: String,
     overview: String,
     poster_path: String,
-    overview: String,
+    status: String,
     popularity: String,
-    tag:[String]
+    tag:[{text: {
+        type: String
+    }}]
 },{
     timestamps: true
 })
