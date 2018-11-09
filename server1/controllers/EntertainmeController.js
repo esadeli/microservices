@@ -13,7 +13,7 @@ module.exports = {
           // console.log('------get redis--------', reply1)
           res.status(200).json(reply1)
         } else if(reply === null){
-          
+
           // get all data
           getentertainmedata(req,res)
 
@@ -26,6 +26,9 @@ module.exports = {
       axios({
         method: 'POST',
         url: 'http://localhost:3001/movies',
+        headers: {
+          headserver: process.env.KEYSECRET
+        },
         data: {
           title: req.body.title,
           overview: req.body.overview,
@@ -54,6 +57,9 @@ module.exports = {
       axios({
         method: 'POST',
         url: 'http://localhost:3002/tvseries',
+        headers: {
+          headserver: process.env.KEYSECRET
+        },
         data: {
           title: req.body.title,
           overview: req.body.overview,
@@ -87,7 +93,10 @@ function getentertainmedata (req,res) {
   // get movie data
   axios({
     method: 'GET',
-    url: 'http://localhost:3001/movies'
+    url: 'http://localhost:3001/movies',
+    headers: {
+      headserver: process.env.KEYSECRET
+    }
   })
   .then(result => {
     moviedata = result.data
@@ -95,7 +104,10 @@ function getentertainmedata (req,res) {
     // get series data
     axios({
         method: 'GET',
-        url: 'http://localhost:3002/tvseries'
+        url: 'http://localhost:3002/tvseries',
+        headers: {
+          headserver: process.env.KEYSECRET
+        }
     })
       .then(series => {
         seriesdata = series.data
