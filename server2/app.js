@@ -3,7 +3,8 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/server2db',{useNewUrlParser: true})
+// mongoose.connect('mongodb://localhost:27017/server2db',{useNewUrlParser: true})
+mongoose.connect(process.env.MONGO_USER,{useNewUrlParser: true})
 const app = express()
 const MovieRouter = require('./routes/MovieRouter')
 
