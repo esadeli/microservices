@@ -8,7 +8,6 @@ module.exports = {
         req.body.tag.forEach(tag => {
             data.push({text: tag})
         });
-
         Tvseries.create({
             title: req.body.title,
             overview: req.body.overview,

@@ -9,10 +9,11 @@ const TvseriesSchema = new Schema({
     poster_path: String,
     status: String,
     popularity: String,
-    tag: [{
-        text: {
-            type: String
-        }}]
+    tag: [String]
+    // tag: [{
+    //     text: {
+    //         type: String
+    //     }}]
 },{
     timestamps: true
 })

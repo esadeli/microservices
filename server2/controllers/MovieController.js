@@ -4,7 +4,6 @@ const Movie = require('../models/movie')
 
 module.exports = {
     add: function (req,res) {
-
         let dataTag = []
         req.body.tag.forEach(tag => {
            dataTag.push({text: tag}) 
@@ -31,7 +30,7 @@ module.exports = {
                 })
             })
     },
-    get: function(req,res) {
+    get: function(req,res) { 
         Movie.find({})
             .then(movies => {
                 res.status(200).json({
